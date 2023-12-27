@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local development settings
+.env
+
+
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Secret key
+*.key
+
+# Compiled Python files
+*.pyc
+
+# Configuration files
+*.ini
+*.conf
+*.cfg
+
+# Dependency directories
+venv/
+env/
+env36/
+env37/
+env38/
+env39/
+venv36/
+venv37/
+venv38/
+venv39/
+
+# Ignore the local development settings
+settings_local.py
+
+# Ignore Django migrations
+/migrations/
+/media/
+
+# Ignore logs
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db

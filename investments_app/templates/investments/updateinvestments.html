@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Vertical Bootstrap Navbar Example</title>
+</head>
+<body>
+    {% include 'investments/navbar.html' %}
+<div class="container-fluid">     
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-0">            
+      <div class="container mt-1">
+        {% if update_success_msg %}
+        <p style="color: green;">{{update_success_msg}}</p>
+        {% endif %}        
+       
+               
+<form method="post" action="">
+  {% csrf_token %}
+
+  <label for="financial_product_dd">Choose Investment Product</label>
+  <select class="form-control" id="user" name="financial_product_dd">
+      <!-- Populate this with Django user options -->
+      <option value="Fixed Deposit" {% if record.financial_product == 'Fixed Deposit' %}selected{% endif %}>Fixed Deposit</option>
+      <option value="Stocks" {% if record.financial_product == 'Stocks' %}selected{% endif %}>Stocks</option>
+      <option value="Debenture" {% if record.financial_product == 'Debenture' %}selected{% endif %}>Debenture</option>
+      <option value="Mutual Funds" {% if record.financial_product == 'Mutual Funds' %}selected{% endif %}>Mutual Funds</option>
+      <option value="Others" {% if record.financial_product == 'Others' %}selected{% endif %}>Others</option>
+      <!-- Add more options as needed -->
+  </select>
+
+  <div class="form-group">
+      <label for="financial_institution">Financial Institution</label>
+      <input type="text" class="form-control" id="financial_institution" name="financial_institution" value="{{ record.financial_institution }}">
+  </div>
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input type="number" class="form-control" id="amount" name="amount" value="{{ record.investment_amount }}">
+  </div>
+
+  <div class="form-group">
+      <label for="rate_of_interest">Rate of Interest</label>
+      <input type="number" class="form-control" id="rate_of_interest" name="rate_of_interest" value="{{ record.rate_of_interest }}">
+  </div>
+
+  <div class="form-group">
+    <label for="interest_payout_frequency">Interest Payout Frequency</label>
+    <select class="form-control" id="interest_payout_frequency" name="interest_payout_frequency">
+      <option value="MONTHLY" {% if record.interest_payout_frequency == 'MONTHLY' %}selected{% endif %}>MONTHLY</option>
+      <option value="QUATERLY" {% if record.interest_payout_frequency == 'QUARTERLY' %}selected{% endif %}>QUARTERLY</option>
+      <option value="HALF" {% if record.interest_payout_frequency == 'HALF' %}selected{% endif %}>HALF</option>
+      <option value="ANNUAL" {% if record.interest_payout_frequency == 'ANNUAL' %}selected{% endif %}>ANNUAL</option>
+      <!-- Add more options as needed -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="date_of_investment">Date of Investment</label>
+    <input type="date" class="form-control" id="date_of_investment" name="date_of_investment" value="{{ record.date_of_investment }}">
+  </div>
+
+  <div class="form-group">
+    <label for="date_of_maturity">Date of Maturity</label>
+    <input type="date" class="form-control" id="date_of_maturity" name="date_of_maturity" value="{{ record.date_of_maturity }}">
+  </div>
+
+  <div class="form-group">
+    <label for="crediting_bank_account">Crediting Bank Account</label>
+    <input type="text" class="form-control" id="crediting_bank_account" name="crediting_bank_account" value="{{ record.crediting_bank_account }}">
+  </div>
+
+  <!-- Add other form fields as needed -->
+
+  <button type="submit" class="btn btn-primary btn-grey">Submit</button>
+</form>     
+<a href="{% url 'home' %}">Back</a>    
+ </div>      
+ </main>  
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

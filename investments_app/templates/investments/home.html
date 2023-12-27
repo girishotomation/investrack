@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Vertical Bootstrap Navbar Example</title>
+</head>
+<body>
+ 
+    {% include 'investments/navbar.html' %}
+    <h2 style="background-color: black; text-align: center; color: greenyellow;">Investment Summary</h2>
+<div class="container-fluid">     
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-0">              
+      <div class="container mt-1">        
+       {% if delete_success_msg%}
+       <p style="color: red;">{{delete_success_msg}}</p>
+       <a href="{% url 'home' %}">Go Back to Dashboard</a>    
+       {% endif %}
+        <table class="table table-striped black-grey-table">
+          <thead>            
+            <tr class="table-secondary">
+              <th scope="col">Investment ID</th>
+              <th scope="col">User</th>
+              <th scope="col">Financial Institution</th>
+              <th scope="col">Financial Product</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Rate of Interest</th>
+              <th scope="col">Interest Payout Frequency</th>
+              <th scope="col">Date of Investment</th>
+              <th scope="col">Date of Maturity</th>
+              <th scope="col">Crediting Bank Account</th>
+              <th scope="col">Actions for the user        </th>              
+            </tr>
+          </thead>                 
+          <tbody> 
+            {% load tz %}                 
+            {% for investment in investment_data %}                                        
+            <tr {% if investment.isMaturing %} class="table-danger" {%else%} class="table-success" {% endif %}  >                        
+              <td> <a href="{% url 'update_investment' pk=investment.investment_id %}">{{investment.investment_id}}</a></td>
+              <td>{{investment.user}}</td>
+              <td>{{investment.financial_institution}}</td>
+              <td>{{investment.financial_product}}</td>
+              <td>{{investment.investment_amount}}</td>
+              <td>{{investment.rate_of_interest}}</td>
+              <td>{{investment.interest_payout_frequency}}</td>
+              <td>{{investment.date_of_investment|date:"Y-m-d"}}</td>
+              <td>{{investment.date_of_maturity|date:"Y-m-d"}}</td>
+              <td>{{investment.crediting_bank_account}}</td>               
+              <td>
+                <a href="{% url 'delete_investment' pk=investment.investment_id %}">Delete</a>
+                /
+                <a href="{% url 'update_investment' pk=investment.investment_id %}">Edit</a>
+              </td>             
+              <td></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+         </table>   
+         <p style="color: black; font-weight: bold; font-style: italic; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+          Current Date: {% now "Y-m-d" %}
+        </p>  
+       </div>      
+    </main>  
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
