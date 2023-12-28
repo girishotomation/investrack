@@ -148,7 +148,7 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'  # Use 'apikey' as the username
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'girish@ottsoft.ca'
 
 
