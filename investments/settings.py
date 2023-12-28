@@ -142,3 +142,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/home/'
 
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'  # Use 'apikey' as the username
+EMAIL_HOST_PASSWORD = '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'
+DEFAULT_FROM_EMAIL = 'girish@ottsoft.ca'
+
+
