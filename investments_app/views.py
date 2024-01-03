@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
+import requests
 from .models import Investment
 
 
@@ -7,7 +8,15 @@ from .models import Investment
 @login_required
 def view_home(request):
     investment_data=Investment.objects.filter(user=request.user)     
+    return render(request,'investments/home.html',{'investment_data':investment_data})   
+
+@login_required
+def view_home_drf(request):   
+    api_url = "http://127.0.0.1:8000/api/investments/" 
+    response = requests.get(api_url)
+    investment_data = response.json() if response.status_code == 200 else []
     return render(request,'investments/home.html',{'investment_data':investment_data})
+
 
 @login_required
 def view_add_new_investment(request):
@@ -33,7 +42,7 @@ def update_investment_view(request,pk):
     #record=get_object_or_404(Investment, pk=pk)    
     record=Investment.objects.get(investment_id=pk)   
     if request.method=='POST':
-        record.financial_product_dd=financial_institution= request.POST.get('financial_product_dd')
+        record.financial_product=request.POST.get('financial_product_dd')
         record.financial_institution= request.POST.get('financial_institution')
         record.investment_amount= request.POST.get('amount')
         record.rate_of_interest= request.POST.get('rate_of_interest')
