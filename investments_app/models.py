@@ -22,7 +22,7 @@ class Investment(models.Model):
     financial_institution = models.CharField(max_length=255)
     financial_product = models.CharField(max_length=255)
     investment_amount=models.FloatField(max_length=15,default=0)
-    rate_of_interest =models.FloatField()
+    rate_of_interest =models.FloatField(max_length=4,default=0)
     interest_payout_frequency = models.CharField(choices=PAYOUT_CHOICES,max_length=255,default='ANNUAL')
     date_of_investment = models.DateField()
     date_of_maturity = models.DateField()
