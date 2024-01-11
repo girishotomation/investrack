@@ -51,3 +51,6 @@ settings_local.py
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+# Database
+db.sqlite3
