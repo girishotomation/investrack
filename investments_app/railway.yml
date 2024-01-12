@@ -1,0 +1,4 @@
+jobs:
+  - name: send-maturity-emails
+    schedule: "1 3 * * *"
+    command: "python manage.py send_maturity_emails"

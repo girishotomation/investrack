@@ -10,7 +10,7 @@ from sendgrid.helpers.mail import Mail,TemplateId
 @receiver(post_save, sender=User)
 def send_welcome_email(sender, instance, created, **kwargs):
     if created:
-        subject = 'Welcome to Your Website'
+        subject = 'Welcome to Investrack'
         template_id = 'd-4ea0cc93323348969058a21b4d9f5bfb'        
         message = 'Thank you for registering with us!'
         from_email = settings.DEFAULT_FROM_EMAIL
