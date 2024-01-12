@@ -5,48 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <title>Investrack</title>
-  <style>
-    /* Custom style for blue font color */
+  <style>    
     .navbar-nav .nav-link {
       color: whitesmoke !important;
     }
     .navbar-brand {
       color: greenyellow !important;
+      font-size: 30px; /* Adjust the font size as needed */
+      font-weight: bold;
     }
+    .navbar-align {
+      background-color: #4CAF50;      
+    }
+
+    .nav-custom {
+      color: rgb(200, 228, 17);
+      transition: background-color 0.3s ease, color ;      
+    }
+    .nav-custom:hover {
+          border-top: 20px;
+          text-align: center;
+          background-color: #ffffff;
+          color: #0d0d0d;         
+    }
+    .nav-logout {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;        
+    }
+
+    .nav-logout:hover {
+    background-color: #0f100f; /* Button background color on hover */
+    color: #fff; /* Button text color on hover */
+    }      
+   
   </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">Investrack</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link active"  href="{% url 'home' %}">
-              Investments Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_investment' %}">
-              Add Investment
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" >
-              Reports(Coming Soon...)
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">
-              LogOut
-            </a>
-          </li>
-    </ul>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">Investrack</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active"  href="{% url 'home' %}">
+                  <span class="nav-custom">Investments Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_investment' %}">
+                  <span class="nav-custom">Add Investment</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" >
+                  <span class="nav-custom">Reports(Coming Soon)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                  <span class="nav-logout">Logout</span>
+                </a>
+              </li>
+        </ul>
+      </div>
+    </nav>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>

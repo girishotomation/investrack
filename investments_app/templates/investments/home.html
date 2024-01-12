@@ -31,7 +31,7 @@
               <th scope="col">Date of Investment</th>
               <th scope="col">Date of Maturity</th>
               <th scope="col">Crediting Bank Account</th>
-              <th scope="col">Actions for the user        </th>              
+              <th scope="col">Actions for the user</th>              
             </tr>
           </thead>                 
           <tbody> 
@@ -52,8 +52,7 @@
                 <a href="{% url 'delete_investment' pk=investment.investment_id %}">Delete</a>
                 /
                 <a href="{% url 'update_investment' pk=investment.investment_id %}">Edit</a>
-              </td>             
-              <td></td>
+              </td>                           
             </tr>
             {% endfor %}
           </tbody>
