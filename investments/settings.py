@@ -100,8 +100,8 @@ DATABASES = {
         'NAME': config('POSTGRES_DB'),
         'USER': config('POSTGRES_USER'),
         'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': 'localhost',  # Set to the host where your PostgreSQL server is running
-        'PORT': '5432',       # Set to the port your PostgreSQL server is listening on
+        'HOST': config('PGHOST'),  # Set to the host where your PostgreSQL server is running
+        'PORT': config('PGPORT'),       # Set to the port your PostgreSQL server is listening on
     }
 }
 
