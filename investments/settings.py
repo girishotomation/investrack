@@ -93,6 +93,8 @@ DATABASES = {
     }
 }
 """
+
+#LOCAL
 """
 DATABASES = {
     'default': {
@@ -106,6 +108,7 @@ DATABASES = {
 }
 
 """
+#PROD
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
