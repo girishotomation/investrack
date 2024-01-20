@@ -13,19 +13,21 @@ class Command(BaseCommand):
         maturing_investments = Investment.objects.filter(date_of_maturity=current_date)
     """
     def handle(self, *args, **options):
-        current_date = timezone.now().date()       
+        current_date = timezone.now().date()  
+        print(current_date)     
         maturing_investments_this_month = Investment.objects.filter(
             date_of_maturity__month=current_date.month,            
         )               
         subject="Your investments maturing this month"
         self.send_emails(maturing_investments_this_month,subject)
+        self.stdout.write(self.style.SUCCESS('Emails sent successfully-Monthly'))
 
         # Emails for investments maturing today
-        maturing_investments_today = Investment.objects.filter(date_of_maturity=current_date)
+        maturing_investments_today = Investment.objects.filter(date_of_maturity=current_date)        
         if current_date :
             subject ="Your Investment is Maturing Today"
             self.send_emails(maturing_investments_today,subject)
-            self.stdout.write(self.style.SUCCESS('Emails sent successfully'))
+            self.stdout.write(self.style.SUCCESS('Emails sent successfully for '+ subject))
 
     def send_emails(self, investments, subject):
         for investment in investments:
