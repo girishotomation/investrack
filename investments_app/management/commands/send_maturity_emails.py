@@ -19,6 +19,7 @@ class Command(BaseCommand):
         )               
         subject="Your investments maturing this month"
         self.send_emails(maturing_investments_this_month,subject)
+        self.stdout.write(self.style.SUCCESS('Emails sent successfully-Monthly'))
 
         # Emails for investments maturing today
         maturing_investments_today = Investment.objects.filter(date_of_maturity=current_date)
